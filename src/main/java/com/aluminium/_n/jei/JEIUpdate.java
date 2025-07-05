@@ -10,14 +10,11 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class JEIUpdate {
 
     public static ExclusionArea area;
-    private static int i = 0;
 
     @SubscribeEvent
-    public static void exclude(TickEvent.ClientTickEvent event) {
-        if (area != null && event.phase == TickEvent.Phase.END && i > 1) {
-            i = 0;
+    public static void exclude(TickEvent.RenderTickEvent event) {
+        if (area != null) {
             area.exclude();
         }
-        i += 1;
     }
 }
